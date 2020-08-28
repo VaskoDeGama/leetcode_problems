@@ -1,0 +1,32 @@
+{
+  "name": "leetcode_problems",
+  "version": "1.0.0",
+  "description": "My thoughts on Leetcode problems",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./src/**.js",
+    "test": "jest --coverage",
+    "dev": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VaskoDeGama/leetcode_problems.git"
+  },
+  "keywords": [],
+  "author": "VaskaDaGama (karmenyuk@yandex.ru)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.20.0",
+    "jest": "^26.4.2",
+    "jest-runner-eslint": "^0.10.0"
+  },
+  "bugs": {
+    "url": "https://github.com/VaskoDeGama/leetcode_problems/issues"
+  },
+  "homepage": "https://github.com/VaskoDeGama/leetcode_problems#readme"
+}
