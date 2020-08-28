@@ -1,2 +1,2 @@
-# leetcode_problems
+# Leetcode problems
 My thoughts on Leetcode problems
