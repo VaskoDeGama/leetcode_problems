@@ -1,22 +1,4 @@
-const {runningSum, getSum}  = require('./runningSum')
-
-describe('getSum',  () => {
-  test('will be define', () => {
-    expect(getSum).toBeDefined()
-  })
-  test('do return array', () => {
-    expect(getSum([1, 2])).toBeDefined()
-    expect(typeof getSum([1, 2])).toBe('number')
-  })
-  test('simple test 1', () => {
-    const nums1 = [1, 2, 3]
-    expect(getSum(nums1)).toStrictEqual(6)
-  })
-  test('simple test 2', () => {
-    const nums1 = [1]
-    expect(getSum(nums1)).toStrictEqual(1)
-  })
-})
+const {runningSum}  = require('./runningSum')
 
 describe('runningSum',  () => {
   test('will be define', () => {
