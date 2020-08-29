@@ -6,7 +6,11 @@
  * @return {number[]}
  */
 function runningSum(nums) {
-  nums.reduce((a,c,i,arr) => arr[i] += a)
+  nums.reduce((a,c,i,arr) => {
+    arr[i] += a
+    return arr[i]
+
+  })
   return nums
 }
 

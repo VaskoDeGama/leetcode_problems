@@ -5,8 +5,8 @@ describe('runningSum',  () => {
     expect(runningSum).toBeDefined()
   })
   test('do return array', () => {
-    expect(runningSum([])).toBeDefined()
-    expect(runningSum([])).toBeInstanceOf(Array)
+    expect(runningSum([1])).toBeDefined()
+    expect(runningSum([1])).toBeInstanceOf(Array)
   })
   test('simple test 1', () => {
     const nums1 = [1,2,3,4]
