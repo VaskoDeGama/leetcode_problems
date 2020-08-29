@@ -17,7 +17,9 @@
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "never"],
-    "no-restricted-syntax": "off"
+    "no-restricted-syntax": "off",
+    "no-plusplus": "off",
+    "no-param-reassign": "off"
   },
   "plugins": ["import","jest"]
 }
