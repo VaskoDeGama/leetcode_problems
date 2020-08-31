@@ -1,6 +1,6 @@
 const romanToInt = require('./romanToInt')
 
-describe('isPalindrome',  () => {
+describe('romanToInt',  () => {
   test('will be define', () => {
     expect(romanToInt).toBeDefined()
   })
