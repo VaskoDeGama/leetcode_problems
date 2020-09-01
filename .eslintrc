@@ -6,6 +6,9 @@
     "node": true,
     "jest/globals": true
   },
+  "globals":{
+    "BigInt":true
+  },
   "parser": "babel-eslint",
   "extends": [
     "airbnb-base",
