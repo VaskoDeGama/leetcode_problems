@@ -25,6 +25,6 @@ function isValid(s) {
       }
     }
   }
-  return stack.length <= 0;
+  return stack.length <= 0
 }
 module.exports = isValid

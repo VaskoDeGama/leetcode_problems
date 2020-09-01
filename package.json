@@ -4,7 +4,7 @@
   "description": "My thoughts on Leetcode problems",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ./src/**.js",
+    "lint": "eslint --fix ./src/*/*.js ",
     "test": "jest --coverage",
     "dev": "jest --watch"
   },

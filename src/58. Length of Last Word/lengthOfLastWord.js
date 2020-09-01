@@ -11,11 +11,13 @@
  */
 
 function lengthOfLastWord(s) {
-  const result = s
-    .split(' ')
-    .filter((i) => i !== ' ' && i !== '')
-    .pop()
-  return result ? result.length : 0
+  const arr = s.split(' ')
+  for (let r = arr.length - 1; r >= 0; r--) {
+    if (arr[r] !== '') {
+      return arr[r].length
+    }
+  }
+  return 0
 }
 
 module.exports = lengthOfLastWord
