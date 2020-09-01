@@ -13,9 +13,21 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 function rotate(nums, k) {
-  while (k--) {
-    nums.unshift(nums.pop())
+  function swap(i, j) {
+    ;[nums[i], nums[j]] = [nums[j], nums[i]]
   }
+
+  function reverse(i, j) {
+    while (i < j) {
+      swap(i++, j--)
+    }
+  }
+
+  const arrLength = nums.length
+  k %= arrLength
+  reverse(0, arrLength - k - 1)
+  reverse(arrLength - k, arrLength - 1)
+  reverse(0, arrLength - 1)
 }
 
 module.exports = rotate
