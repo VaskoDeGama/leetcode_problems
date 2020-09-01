@@ -5,7 +5,7 @@ describe('strStr',  () => {
   test('will be define', () => {
     expect(strStr).toBeDefined()
   })
-  test('do not return anything, modify in-place instead.', () => {
+  test('do not return something', () => {
     expect(strStr('','')).toBeDefined()
   })
   test('simple test 1', () => {
@@ -14,6 +14,4 @@ describe('strStr',  () => {
   test('simple test 2', () => {
     expect(strStr('aaaaa','bba')).toStrictEqual(-1)
   })
-
-
 })
