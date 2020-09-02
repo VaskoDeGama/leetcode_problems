@@ -13,8 +13,15 @@
  */
 function deleteDuplicates(head) {
   if (!head || !head.next) return head
-  head.next = deleteDuplicates(head.next)
-  return head.val === head.next.val ? head.next : head
+  let current = head
+  while (current.next !== null) {
+    if (current.val === current.next.val) {
+      current.next = current.next.next
+    } else {
+      current = current.next
+    }
+  }
+  return head
 }
 
 module.exports = deleteDuplicates
