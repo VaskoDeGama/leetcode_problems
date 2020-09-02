@@ -1,18 +1,3 @@
-function toArr(node, results) {
-  if (node === null) {
-    return null
-  }
-  const traverse = function (current) {
-    if (current) {
-      results.push(current.val)
-      traverse(current.left)
-      traverse(current.right)
-    }
-    results.push(null)
-  }
-  traverse(node)
-  return results
-}
 /**
  * Given two binary trees, write a function to check if they are the same or not.
  * Two binary trees are considered the same if they are structurally
@@ -31,15 +16,12 @@ function toArr(node, results) {
  * @return {boolean}
  */
 function isSameTree(p, q) {
-  const arrP = toArr(p, [])
-  const arrQ = toArr(q, [])
-  if (arrQ === arrP) return true
-  if (!arrP || !arrQ) return false
-  if (!arrP.length || !arrQ.length) return false
-  return (
-    arrP.length === arrQ.length &&
-    arrP.every((value, index) => value === arrQ[index])
-  )
+  if (!p && !q) return true
+  if (!p || !q || p.val !== q.val) {
+    return false
+  }
+
+  return isSameTree(q.left, p.left) && isSameTree(q.right, p.right)
 }
 
 module.exports = isSameTree
