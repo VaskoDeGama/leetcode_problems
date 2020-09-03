@@ -22,15 +22,7 @@ function maxDepth(root) {
   if (!root) {
     return 0
   }
-  let depth = 0
-  if (root && root.left !== null) {
-    depth = Math.max(depth, maxDepth(root.left))
-  }
-  if (root && root.right !== null) {
-    depth = Math.max(depth, maxDepth(root.right))
-  }
-  console.log(depth)
-  return depth + 1
+  return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1
 }
 
 module.exports = maxDepth
