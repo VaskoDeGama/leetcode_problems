@@ -7,7 +7,14 @@
  * @return {number}
  */
 function removeDuplicates(nums) {
-  nums = [...new Set(nums)]
+  nums = [
+    ...nums.reduce((acc, item) => {
+      if (acc.indexOf(item) === -1) {
+        acc.push(item)
+      }
+      return acc
+    }, []),
+  ]
   return nums.length
 }
 
