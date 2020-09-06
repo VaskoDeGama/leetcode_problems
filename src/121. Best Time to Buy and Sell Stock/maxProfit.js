@@ -10,13 +10,13 @@
  * @return {number}
  */
 function maxProfit(prices) {
-  let maxProfit = 0
-  let minPrice = Number.MAX_SAFE_INTEGER
-  for (let i = 0; i < prices.length; i++) {
-    minPrice = Math.min(minPrice, prices[i])
-    maxProfit = Math.max(maxProfit, prices[i] - minPrice)
-  }
-  return maxProfit
+  return prices.reduce(
+    (prev, current) => ({
+      min: Math.min(prev.min, current),
+      max: Math.max(prev.max, current - prev.min),
+    }),
+    { min: prices[0], max: 0 }
+  ).max
 }
 
 module.exports = maxProfit
