@@ -10,20 +10,33 @@
  * @return {number[]}
  */
 function plusOne(digits) {
-  const resArr = []
-  let carry = 1
+  let remainder = 0
+  for (let i = digits.length - 1; i >= 0; i -= 1) {
+    let number = digits[i]
 
-  for (let i = digits.length - 1; i >= 0; i--) {
-    let res = digits[i] + carry
-    carry = Math.floor(res / 10)
-    if (res >= 10) res = 0
-    resArr.unshift(res)
-  }
-  if (carry > 0) {
-    resArr.unshift(1)
+    if (i === digits.length - 1) {
+      number += 1
+    }
+
+    if (remainder > 0) {
+      number += remainder
+    }
+
+    if (number > 9) {
+      remainder = 1
+    } else {
+      remainder = 0
+    }
+
+    digits[i] = number % 10
   }
 
-  return resArr
+  if (remainder > 0) {
+    digits.unshift(1)
+  }
+
+
+  return digits
 }
 
 module.exports = plusOne

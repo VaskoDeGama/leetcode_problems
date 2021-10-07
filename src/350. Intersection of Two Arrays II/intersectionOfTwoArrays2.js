@@ -9,16 +9,21 @@
  * @return {number[]}
  */
 function intersectionOfTwoArrays2(nums1, nums2) {
+  const map  = new Map()
   const result = []
-  const sortedNums1 = nums1.sort()
-  const sortedNums2 = nums2.sort()
-  const [long, short] = nums1.length > nums2.length ? [sortedNums1, sortedNums2] : [sortedNums2, sortedNums1]
 
-  for (let i = 0; i < long.length; i += 1) {
-    const indexInShort = short.indexOf(long[i])
-    if (indexInShort !== -1) {
-      short.splice(indexInShort, 1)
-      result.push(long[i])
+  for (const n of nums1) {
+    if (map.has(n)) {
+      map.set(n, map.get(n) + 1)
+    } else {
+      map.set(n, 1)
+    }
+  }
+
+  for (const n of nums2) {
+    if (map.has(n) && map.get(n) > 0) {
+      result.push(n)
+      map.set(n, map.get(n) - 1)
     }
   }
 

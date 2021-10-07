@@ -16,4 +16,8 @@ describe('plusOne', () => {
   test('simple test 3', () => {
     expect(plusOne([0])).toStrictEqual([1])
   })
+
+  test('simple test 3', () => {
+    expect(plusOne([9])).toStrictEqual([1,0])
+  })
 })
