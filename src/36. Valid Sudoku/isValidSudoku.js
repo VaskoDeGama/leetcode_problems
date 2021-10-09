@@ -7,59 +7,35 @@
  * @return {boolean}
  */
 function isValidSudoku(board) {
-
-  // check rows
-  let rowMap = {}
-  let columnMap = {}
-  const squareMap = Array.from({length: 9}, () => [])
-
-
   for (let i = 0; i < board?.length; i += 1) {
-    rowMap = {}
-    columnMap = {}
+    const row = new Set()
+    const column = new Set()
+    const sqr = new Set()
     for (let j = 0; j < board?.length; j += 1) {
-      const charForRowCheck = board[i][j]
-      const charForColumnCheck = board[j][i]
+      const rowN = board[i][j]
+      const columnN = board[j][i]
+      const sqrN = board[Math.floor(i / 3) * 3 + Math.floor(j / 3)][(i % 3) * 3 + j % 3]
 
-      if (charForRowCheck !== '.') {
-        if (!rowMap[charForRowCheck]) {
-          rowMap[charForRowCheck] = true
-        } else {
-          return false
-        }
-
-        if (i < 3 && j < 3) {
-          squareMap[0].push(charForRowCheck)
-        } else if ( i < 3 && j < 6 && j >= 3) {
-          squareMap[1].push(charForRowCheck)
-        } else if (i < 3 && j >= 6 && j < 9) {
-          squareMap[2].push(charForRowCheck)
-        } else if (i >= 3 && i < 6 && j < 3) {
-          squareMap[3].push(charForRowCheck)
-        } else if (i >= 3 && i < 6 && j < 6 && j >= 3) {
-          squareMap[4].push(charForRowCheck)
-        } else if (i >= 3 && i < 6 && j >= 6 && j < 9) {
-          squareMap[5].push(charForRowCheck)
-        } else if (i >= 6 && i < 9 && j < 3) {
-          squareMap[6].push(charForRowCheck)
-        }  else if (i >= 6 && i < 9 && j < 6 && j >= 3) {
-          squareMap[7].push(charForRowCheck)
-        } else if (i >= 6 && i < 9 && j >= 6 && j < 9) {
-          squareMap[8].push(charForRowCheck)
-        }
+      if (row.has(rowN) || column.has(columnN) || sqr.has(sqrN)) {
+        return false
       }
 
-      if (charForColumnCheck !== '.') {
-        if (!columnMap[charForColumnCheck]) {
-          columnMap[charForColumnCheck] = true
-        } else {
-          return false
-        }
+      if (rowN !== '.') {
+        row.add(rowN)
       }
+
+      if (columnN !== '.') {
+        column.add(columnN)
+      }
+
+      if (sqrN !== '.') {
+        sqr.add(sqrN)
+      }
+
     }
   }
 
-  return squareMap.every((line) =>  line?.length === new Set(line)?.size)
+  return true
 }
 
 
