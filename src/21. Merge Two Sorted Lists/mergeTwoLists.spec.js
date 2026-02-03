@@ -1,8 +1,9 @@
-const mergeTwoLists = require('./mergeTwoLists')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import mergeTwoLists from './mergeTwoLists.js'
 
 describe('mergeTwoLists', () => {
-  test('will be define', () => {
-    expect(mergeTwoLists).toBeDefined()
+  it('will be define', () => {
+    assert.ok(mergeTwoLists !== undefined)
   })
 })
-

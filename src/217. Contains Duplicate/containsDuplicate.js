@@ -3,10 +3,8 @@
  * Your function should return true if any value appears at least twice in the
  * array, and it should return false if every element is distinct.
  * @param {number[]} nums
- * @return {boolean}
+ * @returns {boolean}
  */
-function containsDuplicate (nums) {
+export default function containsDuplicate(nums) {
   return nums.some((item, index, array) => array.indexOf(item) !== index)
 }
-
-module.exports = containsDuplicate

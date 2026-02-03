@@ -1,26 +1,26 @@
-const removeElement = require('./removeElement')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import removeElement from './removeElement.js'
 
-
-describe('removeElement',  () => {
-  test('will be define', () => {
-    expect(removeElement).toBeDefined()
+describe('removeElement', () => {
+  it('will be define', () => {
+    assert.ok(removeElement !== undefined)
   })
-  test('do not return anything, modify in-place instead.', () => {
-    expect(removeElement([], 0)).toBeDefined()
+  it('do not return anything, modify in-place instead.', () => {
+    assert.ok(removeElement([], 0) !== undefined)
   })
-  test('simple test 1', () => {
-    const nums1 = [3,2,2,3]
+  it('simple test 1', () => {
+    const nums1 = [3, 2, 2, 3]
     const val = 3
 
     removeElement(nums1, val)
-    expect(nums1).toStrictEqual([2,2])
+    assert.deepStrictEqual(nums1, [2, 2])
   })
-  test('simple test 2', () => {
-    const nums2 = [0,1,2,2,3,0,4,2]
+  it('simple test 2', () => {
+    const nums2 = [0, 1, 2, 2, 3, 0, 4, 2]
     const val = 2
+
     removeElement(nums2, val)
-    expect(nums2).toStrictEqual([0,1,3,0,4])
+    assert.deepStrictEqual(nums2, [0, 1, 3, 0, 4])
   })
-
-
 })

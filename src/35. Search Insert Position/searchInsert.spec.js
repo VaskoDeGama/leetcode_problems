@@ -1,23 +1,24 @@
-const searchInsert = require('./searchInsert')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import searchInsert from './searchInsert.js'
 
-
-describe('searchInsert',  () => {
-  test('will be define', () => {
-    expect(searchInsert).toBeDefined()
+describe('searchInsert', () => {
+  it('will be define', () => {
+    assert.ok(searchInsert !== undefined)
   })
-  test('do return something.', () => {
-    expect(searchInsert([],0)).toBeDefined()
+  it('do return something.', () => {
+    assert.ok(searchInsert([], 0) !== undefined)
   })
-  test('simple test 1', () => {
-    expect(searchInsert([1,3,5,6], 5)).toStrictEqual(2)
+  it('simple test 1', () => {
+    assert.deepStrictEqual(searchInsert([1, 3, 5, 6], 5), 2)
   })
-  test('simple test 2', () => {
-    expect(searchInsert([1,3,5,6], 2)).toStrictEqual(1)
+  it('simple test 2', () => {
+    assert.deepStrictEqual(searchInsert([1, 3, 5, 6], 2), 1)
   })
-  test('simple test 3', () => {
-    expect(searchInsert([1,3,5,6], 7)).toStrictEqual(4)
+  it('simple test 3', () => {
+    assert.deepStrictEqual(searchInsert([1, 3, 5, 6], 7), 4)
   })
-  test('simple test 4', () => {
-    expect(searchInsert([1,3,5,6], 0)).toStrictEqual(0)
+  it('simple test 4', () => {
+    assert.deepStrictEqual(searchInsert([1, 3, 5, 6], 0), 0)
   })
 })

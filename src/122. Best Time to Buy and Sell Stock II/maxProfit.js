@@ -6,16 +6,11 @@
  * one share of the stock multiple times).
  * Note: You may not engage in multiple transactions
  * at the same time (i.e., you must sell the stock before you buy again).
- *
  * @param {number[]} prices
- * @return {number}
+ * @returns {number}
  */
-function maxProfit(prices) {
+export default function maxProfit(prices) {
   return prices.reduce((profit, sell, index, array) => {
-    return index > 0 && sell > array[index - 1]
-      ? profit + sell - array[index - 1]
-      : profit
+    return index > 0 && sell > array[index - 1] ? profit + sell - array[index - 1] : profit
   }, 0)
 }
-
-module.exports = maxProfit

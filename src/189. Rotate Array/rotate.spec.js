@@ -1,28 +1,33 @@
-const rotate = require('./rotate')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import rotate from './rotate.js'
 
 describe('rotate', () => {
-  test('will be define', () => {
-    expect(rotate).toBeDefined()
+  it('will be define', () => {
+    assert.ok(rotate !== undefined)
   })
-  test('do not return anything, modify nums in-place instead.', () => {
-    expect(rotate([1, 2, 3, 4, 5, 6, 7], 3)).not.toBeDefined()
+  it('do not return anything, modify nums in-place instead.', () => {
+    assert.strictEqual(rotate([1, 2, 3, 4, 5, 6, 7], 3), undefined)
   })
-  test('simple test 1', () => {
+  it('simple test 1', () => {
     const nums1 = [1, 2, 3, 4, 5, 6, 7]
     const k = 3
+
     rotate(nums1, k)
-    expect(nums1).toStrictEqual([5, 6, 7, 1, 2, 3, 4])
+    assert.deepStrictEqual(nums1, [5, 6, 7, 1, 2, 3, 4])
   })
-  test('simple test 2', () => {
+  it('simple test 2', () => {
     const nums2 = [-1, -100, 3, 99]
     const k = 2
+
     rotate(nums2, k)
-    expect(nums2).toStrictEqual([3, 99, -1, -100])
+    assert.deepStrictEqual(nums2, [3, 99, -1, -100])
   })
-  test('simple test 3', () => {
+  it('simple test 3', () => {
     const nums3 = [-1, -100]
     const k = 3
+
     rotate(nums3, k)
-    expect(nums3).toStrictEqual([-100, -1])
+    assert.deepStrictEqual(nums3, [-100, -1])
   })
 })

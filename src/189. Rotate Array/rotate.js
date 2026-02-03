@@ -10,13 +10,21 @@
  * k >= 0
  * @param {number[]} nums
  * @param {number} k
- * @return {void} Do not return anything, modify nums in-place instead.
+ * @returns {void} Do not return anything, modify nums in-place instead.
  */
-function rotate(nums, k) {
+export default function rotate(nums, k) {
+  /**
+   * @param {number} i
+   * @param {number} j
+   */
   function swap(i, j) {
     ;[nums[i], nums[j]] = [nums[j], nums[i]]
   }
 
+  /**
+   * @param {number} i
+   * @param {number} j
+   */
   function reverse(i, j) {
     while (i < j) {
       swap(i++, j--)
@@ -24,10 +32,9 @@ function rotate(nums, k) {
   }
 
   const arrLength = nums.length
+
   k %= arrLength
   reverse(0, arrLength - k - 1)
   reverse(arrLength - k, arrLength - 1)
   reverse(0, arrLength - 1)
 }
-
-module.exports = rotate

@@ -1,16 +1,18 @@
-const climbStairs = require('./climbStairs')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import climbStairs from './climbStairs.js'
 
 describe('climbStairs', () => {
-  test('will be define', () => {
-    expect(climbStairs).toBeDefined()
+  it('will be define', () => {
+    assert.ok(climbStairs !== undefined)
   })
-  test('do return something.', () => {
-    expect(climbStairs(2)).toBeDefined()
+  it('do return something.', () => {
+    assert.ok(climbStairs(2) !== undefined)
   })
-  test('simple test 1', () => {
-    expect(climbStairs(2)).toStrictEqual(2)
+  it('simple test 1', () => {
+    assert.deepStrictEqual(climbStairs(2), 2)
   })
-  test('simple test 2', () => {
-    expect(climbStairs(3)).toStrictEqual(3)
+  it('simple test 2', () => {
+    assert.deepStrictEqual(climbStairs(3), 3)
   })
 })

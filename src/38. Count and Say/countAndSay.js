@@ -1,6 +1,11 @@
+/**
+ * @param {string} s
+ * @returns {number}
+ */
 function count(s) {
   const char = s.charAt(0)
   let cnt = 1
+
   while (cnt < s.length) {
     if (s.charAt(cnt) === char) {
       cnt++
@@ -26,16 +31,16 @@ function count(s) {
  * You can do so recursively, in other words from the previous member read off the digits,
  * counting the number of digits in groups of the same digit.
  * Note: Each term of the sequence of integers will be represented as a string.
- *
  * @param {number} n
- * @return {string}
+ * @returns {string}
  */
-
-function countAndSay(n) {
+export default function countAndSay(n) {
   let s = '1'
   let cnt
+
   for (let i = 2; i <= n; i++) {
     let output = ''
+
     while (s.length) {
       cnt = count(s)
       output = output + cnt + s.charAt(0)
@@ -46,5 +51,3 @@ function countAndSay(n) {
 
   return s
 }
-
-module.exports = countAndSay

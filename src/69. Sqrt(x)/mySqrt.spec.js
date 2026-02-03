@@ -1,16 +1,18 @@
-const mySqrt = require('./mySqrt')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import mySqrt from './mySqrt.js'
 
 describe('mySqrt', () => {
-  test('will be define', () => {
-    expect(mySqrt).toBeDefined()
+  it('will be define', () => {
+    assert.ok(mySqrt !== undefined)
   })
-  test('do return something.', () => {
-    expect(mySqrt(2)).toBeDefined()
+  it('do return something.', () => {
+    assert.ok(mySqrt(2) !== undefined)
   })
-  test('simple test 1', () => {
-    expect(mySqrt(2)).toStrictEqual(1)
+  it('simple test 1', () => {
+    assert.deepStrictEqual(mySqrt(2), 1)
   })
-  test('simple test 2', () => {
-    expect(mySqrt(8)).toStrictEqual(2)
+  it('simple test 2', () => {
+    assert.deepStrictEqual(mySqrt(8), 2)
   })
 })

@@ -10,21 +10,26 @@
  *     this.right = (right===undefined ? null : right)
  * }
  */
+
 /**
- * @param {TreeNode} root
- * @return {boolean}
+ * @param {object} nodeOne
+ * @param {object} nodeTwo
+ * @returns {object}
  */
-function isSymmetric(root) {
-  function isEqual(nodeOne, nodeTwo) {
-    if (nodeOne == null && nodeTwo == null) return true
-    if (nodeOne == null || nodeTwo == null) return false
-    return (
-      nodeOne.val === nodeTwo.val &&
-      isEqual(nodeOne.right, nodeTwo.left) &&
-      isEqual(nodeOne.left, nodeTwo.right)
-    )
+function isEqual(nodeOne, nodeTwo) {
+  if (nodeOne == null && nodeTwo == null) {
+    return true
   }
-  return isEqual(root, root)
+  if (nodeOne == null || nodeTwo == null) {
+    return false
+  }
+  return nodeOne.val === nodeTwo.val && isEqual(nodeOne.right, nodeTwo.left) && isEqual(nodeOne.left, nodeTwo.right)
 }
 
-module.exports = isSymmetric
+/**
+ * @param {object} root
+ * @returns {boolean}
+ */
+export default function isSymmetric(root) {
+  return isEqual(root, root)
+}

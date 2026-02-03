@@ -5,18 +5,15 @@
  * (i.e., buy one and sell one share of the stock), design an algorithm
  * to find the maximum profit.
  * Note that you cannot sell a stock before you buy one.
- *
  * @param {number[]} prices
- * @return {number}
+ * @returns {number}
  */
-function maxProfit(prices) {
+export default function maxProfit(prices) {
   return prices.reduce(
     (prev, current) => ({
       min: Math.min(prev.min, current),
-      max: Math.max(prev.max, current - prev.min),
+      max: Math.max(prev.max, current - prev.min)
     }),
     { min: prices[0], max: 0 }
   ).max
 }
-
-module.exports = maxProfit

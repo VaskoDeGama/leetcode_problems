@@ -1,21 +1,21 @@
-const merge = require('./merge')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import merge from './merge.js'
 
-
-describe('merge',  () => {
-  test('will be define', () => {
-    expect(merge).toBeDefined()
+describe('merge', () => {
+  it('will be define', () => {
+    assert.ok(merge !== undefined)
   })
-  test('do not return anything, modify in-place instead.', () => {
-    expect(merge([], 0, [], 0)).not.toBeDefined()
+  it('do not return anything, modify in-place instead.', () => {
+    assert.strictEqual(merge([], 0, [], 0), undefined)
   })
-  test('simple test 1', () => {
-    const nums1 = [1,2,3,0,0,0]
+  it('simple test 1', () => {
+    const nums1 = [1, 2, 3, 0, 0, 0]
     const m = 3
-    const nums2 = [2,5,6]
+    const nums2 = [2, 5, 6]
     const n = 3
+
     merge(nums1, m, nums2, n)
-    expect(nums1).toStrictEqual([1,2,2,3,5,6])
+    assert.deepStrictEqual(nums1, [1, 2, 2, 3, 5, 6])
   })
-
-
 })

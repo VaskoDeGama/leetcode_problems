@@ -1,23 +1,25 @@
-const plusOne = require('./plusOne')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import plusOne from './plusOne.js'
 
 describe('plusOne', () => {
-  test('will be define', () => {
-    expect(plusOne).toBeDefined()
+  it('will be define', () => {
+    assert.ok(plusOne !== undefined)
   })
-  test('do return something.', () => {
-    expect(plusOne([1, 2, 3])).toBeDefined()
+  it('do return something.', () => {
+    assert.ok(plusOne([1, 2, 3]) !== undefined)
   })
-  test('simple test 1', () => {
-    expect(plusOne([1, 2, 3])).toStrictEqual([1, 2, 4])
+  it('simple test 1', () => {
+    assert.deepStrictEqual(plusOne([1, 2, 3]), [1, 2, 4])
   })
-  test('simple test 2', () => {
-    expect(plusOne([4, 3, 2, 1])).toStrictEqual([4, 3, 2, 2])
+  it('simple test 2', () => {
+    assert.deepStrictEqual(plusOne([4, 3, 2, 1]), [4, 3, 2, 2])
   })
-  test('simple test 3', () => {
-    expect(plusOne([0])).toStrictEqual([1])
+  it('simple test 3', () => {
+    assert.deepStrictEqual(plusOne([0]), [1])
   })
 
-  test('simple test 3', () => {
-    expect(plusOne([9])).toStrictEqual([1,0])
+  it('simple test 3', () => {
+    assert.deepStrictEqual(plusOne([9]), [1, 0])
   })
 })

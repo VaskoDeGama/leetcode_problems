@@ -1,19 +1,21 @@
-const reverse = require('./reverse')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import reverse from './reverse.js'
 
-describe('reverse',  () => {
-  test('will be define', () => {
-    expect(reverse).toBeDefined()
+describe('reverse', () => {
+  it('will be define', () => {
+    assert.ok(reverse !== undefined)
   })
-  test('do  return Number', () => {
-    expect(reverse(123)).toBeDefined()
+  it('do  return Number', () => {
+    assert.ok(reverse(123) !== undefined)
   })
-  test('simple test 1', () => {
-    expect( reverse(123)).toBe(321)
+  it('simple test 1', () => {
+    assert.strictEqual(reverse(123), 321)
   })
-  test('simple test 2', () => {
-    expect( reverse(-123)).toBe(-321)
+  it('simple test 2', () => {
+    assert.strictEqual(reverse(-123), -321)
   })
-  test('simple test 3', () => {
-    expect( reverse(120)).toBe(21)
+  it('simple test 3', () => {
+    assert.strictEqual(reverse(120), 21)
   })
 })

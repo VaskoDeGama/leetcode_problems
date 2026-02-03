@@ -22,10 +22,17 @@
  *     this.left = (left===undefined ? null : left)
  *     this.right = (right===undefined ? null : right)
  * }
+ * @param {TreeNode|null} node
+ * @param {number} level
+ * @param {number[][]} output
  */
 function bfs(node, level, output) {
-  if (!node) return
-  if (!output[level]) output[level] = []
+  if (!node) {
+    return
+  }
+  if (!output[level]) {
+    output[level] = []
+  }
   output[level].push(node.val)
 
   bfs(node.left, level + 1, output)
@@ -34,12 +41,11 @@ function bfs(node, level, output) {
 
 /**
  * @param {TreeNode} root
- * @return {number[][]}
+ * @returns {number[][]}
  */
-function levelOrderBottom(root) {
+export default function levelOrderBottom(root) {
   const output = []
+
   bfs(root, 0, output)
   return output.reverse()
 }
-
-module.exports = levelOrderBottom

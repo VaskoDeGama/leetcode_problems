@@ -1,17 +1,18 @@
-const removeDuplicates = require('./removeDuplicates')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import removeDuplicates from './removeDuplicates.js'
 
 describe('removeDuplicates', () => {
-  test('will be define', () => {
-    expect(removeDuplicates).toBeDefined()
+  it('will be define', () => {
+    assert.ok(removeDuplicates !== undefined)
   })
-  test('do  return Number', () => {
-    expect(removeDuplicates([1,1,2])).toBeDefined()
+  it('do  return Number', () => {
+    assert.ok(removeDuplicates([1, 1, 2]) !== undefined)
   })
-  test('simple test 1', () => {
-    expect( removeDuplicates([0,0,1,1,1,2,2,3,3,4])).toBe(5)
+  it('simple test 1', () => {
+    assert.strictEqual(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]), 5)
   })
-  test('simple test 2', () => {
-    expect( removeDuplicates([1,1,2])).toBe(2)
+  it('simple test 2', () => {
+    assert.strictEqual(removeDuplicates([1, 1, 2]), 2)
   })
 })
-

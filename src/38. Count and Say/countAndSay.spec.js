@@ -1,16 +1,18 @@
-const countAndSay = require('./countAndSay')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import countAndSay from './countAndSay.js'
 
 describe('countAndSay', () => {
-  test('will be define', () => {
-    expect(countAndSay).toBeDefined()
+  it('will be define', () => {
+    assert.ok(countAndSay !== undefined)
   })
-  test('do return something.', () => {
-    expect(countAndSay(4)).toBeDefined()
+  it('do return something.', () => {
+    assert.ok(countAndSay(4) !== undefined)
   })
-  test('simple test 1', () => {
-    expect(countAndSay(1)).toStrictEqual('1')
+  it('simple test 1', () => {
+    assert.deepStrictEqual(countAndSay(1), '1')
   })
-  test('simple test 2', () => {
-    expect(countAndSay(4)).toStrictEqual('1211')
+  it('simple test 2', () => {
+    assert.deepStrictEqual(countAndSay(4), '1211')
   })
 })

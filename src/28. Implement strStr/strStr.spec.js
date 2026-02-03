@@ -1,17 +1,18 @@
-const strStr = require('./strStr')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import strStr from './strStr.js'
 
-
-describe('strStr',  () => {
-  test('will be define', () => {
-    expect(strStr).toBeDefined()
+describe('strStr', () => {
+  it('will be define', () => {
+    assert.ok(strStr !== undefined)
   })
-  test('do not return something', () => {
-    expect(strStr('','')).toBeDefined()
+  it('do not return something', () => {
+    assert.ok(strStr('', '') !== undefined)
   })
-  test('simple test 1', () => {
-    expect(strStr('hello','ll')).toStrictEqual(2)
+  it('simple test 1', () => {
+    assert.deepStrictEqual(strStr('hello', 'll'), 2)
   })
-  test('simple test 2', () => {
-    expect(strStr('aaaaa','bba')).toStrictEqual(-1)
+  it('simple test 2', () => {
+    assert.deepStrictEqual(strStr('aaaaa', 'bba'), -1)
   })
 })

@@ -1,19 +1,21 @@
-const maxProfit = require('./maxProfit')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import maxProfit from './maxProfit.js'
 
 describe('maxProfit', () => {
-  test('will be define', () => {
-    expect(maxProfit).toBeDefined()
+  it('will be define', () => {
+    assert.ok(maxProfit !== undefined)
   })
-  test('do return something.', () => {
-    expect(maxProfit([7, 1, 5, 3, 6, 4])).toBeDefined()
+  it('do return something.', () => {
+    assert.ok(maxProfit([7, 1, 5, 3, 6, 4]) !== undefined)
   })
-  test('simple test 1', () => {
-    expect(maxProfit([7, 1, 5, 3, 6, 4])).toStrictEqual(5)
+  it('simple test 1', () => {
+    assert.deepStrictEqual(maxProfit([7, 1, 5, 3, 6, 4]), 5)
   })
-  test('simple test 2', () => {
-    expect(maxProfit([7, 6, 4, 3, 1])).toStrictEqual(0)
+  it('simple test 2', () => {
+    assert.deepStrictEqual(maxProfit([7, 6, 4, 3, 1]), 0)
   })
-  test('simple test 3', () => {
-    expect(maxProfit([2, 4, 1])).toStrictEqual(2)
+  it('simple test 3', () => {
+    assert.deepStrictEqual(maxProfit([2, 4, 1]), 2)
   })
 })

@@ -7,17 +7,13 @@
  *
  * The order of elements can be changed. It doesn't matter
  * what you leave beyond the new length.
- *
  * @param {number[]} nums
  * @param {number} val
- * @return {number}
+ * @returns {number}
  */
-function removeElement(nums, val) {
-  while(nums.indexOf(val, 0) >= 0) {
-    nums.splice(nums.indexOf(val,0),1)
+export default function removeElement(nums, val) {
+  while (nums.indexOf(val, 0) >= 0) {
+    nums.splice(nums.indexOf(val, 0), 1)
   }
   return nums.length
 }
-
-
-module.exports = removeElement

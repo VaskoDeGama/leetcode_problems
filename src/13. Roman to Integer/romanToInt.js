@@ -26,12 +26,10 @@
  * C can be placed before D (500) and M (1000) to make 400 and 900.
  * Given a roman numeral, convert it to an integer. Input is guaranteed to be within
  * the range from 1 to 3999.
- *
  * @param {string} s
- * @return {number}
+ * @returns {number}
  */
-
-function romanToInt(s) {
+export default function romanToInt(s) {
   let sum = 0
   const map = new Map([
     ['I', 1],
@@ -40,12 +38,13 @@ function romanToInt(s) {
     ['L', 50],
     ['C', 100],
     ['D', 500],
-    ['M', 1000],
+    ['M', 1000]
   ])
 
   for (let i = 0; i < s.length; i++) {
     const current = map.get(s[i])
-    const next = map.get(s[i+1])
+    const next = map.get(s[i + 1])
+
     if (next > current) {
       sum += next - current
       i++
@@ -56,5 +55,3 @@ function romanToInt(s) {
 
   return sum
 }
-
-module.exports = romanToInt

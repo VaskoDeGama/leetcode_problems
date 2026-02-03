@@ -5,12 +5,12 @@
  * at the head of the list, and each element in the array contains a single digit.
  * You may assume the integer does not contain any
  * leading zero, except the number 0 itself.
- *
  * @param {number[]} digits
- * @return {number[]}
+ * @returns {number[]}
  */
-function plusOne(digits) {
+export default function plusOne(digits) {
   let remainder = 0
+
   for (let i = digits.length - 1; i >= 0; i -= 1) {
     let number = digits[i]
 
@@ -35,8 +35,5 @@ function plusOne(digits) {
     digits.unshift(1)
   }
 
-
   return digits
 }
-
-module.exports = plusOne

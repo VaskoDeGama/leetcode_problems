@@ -1,17 +1,18 @@
-const longestCommonPrefix = require('./longestCommonPrefix')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import longestCommonPrefix from './longestCommonPrefix.js'
 
 describe('longestCommonPrefix', () => {
-  test('will be define', () => {
-    expect(longestCommonPrefix).toBeDefined()
+  it('will be define', () => {
+    assert.ok(longestCommonPrefix !== undefined)
   })
-  test('do  return Number', () => {
-    expect(longestCommonPrefix(['flower','flow','flight'])).toBeDefined()
+  it('do  return Number', () => {
+    assert.ok(longestCommonPrefix(['flower', 'flow', 'flight']) !== undefined)
   })
-  test('simple test 1', () => {
-    expect( longestCommonPrefix(['flower','flow','flight'])).toBe('fl')
+  it('simple test 1', () => {
+    assert.strictEqual(longestCommonPrefix(['flower', 'flow', 'flight']), 'fl')
   })
-  test('simple test 2', () => {
-    expect( longestCommonPrefix(['dog','racecar','car'])).toBe('')
+  it('simple test 2', () => {
+    assert.strictEqual(longestCommonPrefix(['dog', 'racecar', 'car']), '')
   })
 })
-

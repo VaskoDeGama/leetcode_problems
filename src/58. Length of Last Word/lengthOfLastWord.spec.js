@@ -1,13 +1,15 @@
-const lengthOfLastWord = require('./lengthOfLastWord')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import lengthOfLastWord from './lengthOfLastWord.js'
 
 describe('lengthOfLastWord', () => {
-  test('will be define', () => {
-    expect(lengthOfLastWord).toBeDefined()
+  it('will be define', () => {
+    assert.ok(lengthOfLastWord !== undefined)
   })
-  test('do return something.', () => {
-    expect(lengthOfLastWord('Hello World')).toBeDefined()
+  it('do return something.', () => {
+    assert.ok(lengthOfLastWord('Hello World') !== undefined)
   })
-  test('simple test 1', () => {
-    expect(lengthOfLastWord('Hello World')).toStrictEqual(5)
+  it('simple test 1', () => {
+    assert.deepStrictEqual(lengthOfLastWord('Hello World'), 5)
   })
 })

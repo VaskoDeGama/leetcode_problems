@@ -1,19 +1,21 @@
-const isPalindrome = require('./isPalindrome')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import isPalindrome from './isPalindrome.js'
 
-describe('isPalindrome',  () => {
-  test('will be define', () => {
-    expect(isPalindrome).toBeDefined()
+describe('isPalindrome', () => {
+  it('will be define', () => {
+    assert.ok(isPalindrome !== undefined)
   })
-  test('do  return Number', () => {
-    expect(isPalindrome(121)).toBeDefined()
+  it('do  return Number', () => {
+    assert.ok(isPalindrome(121) !== undefined)
   })
-  test('simple test 1', () => {
-    expect( isPalindrome(-121)).toBeFalsy()
+  it('simple test 1', () => {
+    assert.ok(!isPalindrome(-121))
   })
-  test('simple test 2', () => {
-    expect( isPalindrome(121)).toBeTruthy()
+  it('simple test 2', () => {
+    assert.ok(isPalindrome(121))
   })
-  test('simple test 3', () => {
-    expect( isPalindrome(10)).toBeFalsy()
+  it('simple test 3', () => {
+    assert.ok(!isPalindrome(10))
   })
 })

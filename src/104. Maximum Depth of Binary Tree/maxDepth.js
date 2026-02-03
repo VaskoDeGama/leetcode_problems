@@ -16,13 +16,11 @@
 
 /**
  * @param {TreeNode} root
- * @return {number}
+ * @returns {number}
  */
-function maxDepth(root) {
+export default function maxDepth(root) {
   if (!root) {
     return 0
   }
   return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1
 }
-
-module.exports = maxDepth

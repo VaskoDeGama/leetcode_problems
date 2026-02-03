@@ -1,28 +1,30 @@
-const isMatch = require('./isMatch')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import isMatch from './isMatch.js'
 
 describe('isMatch', () => {
-  test('will be define', () => {
-    expect(isMatch).toBeDefined()
+  it('will be define', () => {
+    assert.ok(isMatch !== undefined)
   })
-  test('do return something.', () => {
-    expect(isMatch('aa', 'a')).toBeDefined()
+  it('do return something.', () => {
+    assert.ok(isMatch('aa', 'a') !== undefined)
   })
-  test('simple test 1.1', () => {
-    expect(isMatch('aa', 'a')).toStrictEqual(false)
+  it('simple test 1.1', () => {
+    assert.strictEqual(isMatch('aa', 'a'), false)
   })
-  test('simple test 1.2', () => {
-    expect(isMatch('aa', 'aa')).toStrictEqual(true)
+  it('simple test 1.2', () => {
+    assert.strictEqual(isMatch('aa', 'aa'), true)
   })
-  test('simple test 2', () => {
-    expect(isMatch('aa', 'a*')).toStrictEqual(true)
+  it('simple test 2', () => {
+    assert.strictEqual(isMatch('aa', 'a*'), true)
   })
-  test('simple test 3', () => {
-    expect(isMatch('ab', '.*')).toStrictEqual(true)
+  it('simple test 3', () => {
+    assert.strictEqual(isMatch('ab', '.*'), true)
   })
-  test('simple test 4', () => {
-    expect(isMatch('aab', 'c*a*b')).toStrictEqual(true)
+  it('simple test 4', () => {
+    assert.strictEqual(isMatch('aab', 'c*a*b'), true)
   })
-  test('simple test 5', () => {
-    expect(isMatch('mississippi', 'mis*is*p*.')).toStrictEqual(false)
+  it('simple test 5', () => {
+    assert.strictEqual(isMatch('mississippi', 'mis*is*p*.'), false)
   })
 })

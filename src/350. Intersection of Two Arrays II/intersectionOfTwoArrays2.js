@@ -6,10 +6,10 @@
  * 0 <= nums1[i], nums2[i] <= 1000
  * @param {number[]} nums1
  * @param {number[]} nums2
- * @return {number[]}
+ * @returns {number[]}
  */
-function intersectionOfTwoArrays2(nums1, nums2) {
-  const map  = new Map()
+export default function intersectionOfTwoArrays2(nums1, nums2) {
+  const map = new Map()
   const result = []
 
   for (const n of nums1) {
@@ -29,5 +29,3 @@ function intersectionOfTwoArrays2(nums1, nums2) {
 
   return result
 }
-
-module.exports = intersectionOfTwoArrays2

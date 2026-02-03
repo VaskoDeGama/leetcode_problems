@@ -5,12 +5,13 @@
  * For the purpose of this problem, assume that your function returns
  * 0 when the reversed integer overflows.
  * @param {number} x
- * @return {number}
+ * @returns {number}
  */
-function reverse(x) {
- const absReversed = Math.abs(x).toString().split('').reverse().join('')
-  if(absReversed > 2 ** 31) return 0
+export default function reverse(x) {
+  const absReversed = Math.abs(x).toString().split('').reverse().join('')
+
+  if (absReversed > 2 ** 31) {
+    return 0
+  }
   return absReversed * Math.sign(x)
 }
-
-module.exports = reverse

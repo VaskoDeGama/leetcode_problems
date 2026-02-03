@@ -1,22 +1,24 @@
-const romanToInt = require('./romanToInt')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import romanToInt from './romanToInt.js'
 
-describe('romanToInt',  () => {
-  test('will be define', () => {
-    expect(romanToInt).toBeDefined()
+describe('romanToInt', () => {
+  it('will be define', () => {
+    assert.ok(romanToInt !== undefined)
   })
-  test('do  return Number', () => {
-    expect(romanToInt('III')).toBeDefined()
+  it('do  return Number', () => {
+    assert.ok(romanToInt('III') !== undefined)
   })
-  test('simple test 1', () => {
-    expect( romanToInt('IV')).toBe(4)
+  it('simple test 1', () => {
+    assert.strictEqual(romanToInt('IV'), 4)
   })
-  test('simple test 2', () => {
-    expect( romanToInt('IX')).toBe(9)
+  it('simple test 2', () => {
+    assert.strictEqual(romanToInt('IX'), 9)
   })
-  test('simple test 3', () => {
-    expect( romanToInt('LVIII')).toBe(58)
+  it('simple test 3', () => {
+    assert.strictEqual(romanToInt('LVIII'), 58)
   })
-  test('simple test 4', () => {
-    expect( romanToInt('MCMXCIV')).toBe(1994)
+  it('simple test 4', () => {
+    assert.strictEqual(romanToInt('MCMXCIV'), 1994)
   })
 })

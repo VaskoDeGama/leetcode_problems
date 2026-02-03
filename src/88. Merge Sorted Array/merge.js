@@ -13,19 +13,18 @@
  * @param {number} m
  * @param {number[]} nums2
  * @param {number} n
- * @return {void} Do not return anything, modify nums1 in-place instead.
+ * @returns {void} Do not return anything, modify nums1 in-place instead.
  */
-function merge(nums1, m, nums2, n) {
+export default function merge(nums1, m, nums2, n) {
   let position = m + n - 1
+
   m--
   n--
   while (n >= 0) {
-    if(nums1[m] > nums2[n]) {
+    if (nums1[m] > nums2[n]) {
       nums1[position--] = nums1[m--]
     } else {
       nums1[position--] = nums2[n--]
     }
   }
 }
-
-module.exports = merge

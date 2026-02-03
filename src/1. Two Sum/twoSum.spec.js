@@ -1,29 +1,31 @@
-const twoSum = require('./twoSum')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import twoSum from './twoSum.js'
 
-
-describe('twoSum',  () => {
-  test('will be define', () => {
-    expect(twoSum).toBeDefined()
+describe('twoSum', () => {
+  it('will be define', () => {
+    assert.ok(twoSum !== undefined)
   })
-  test('do return array', () => {
-    expect(twoSum([], 0)).toBeDefined()
-    expect(twoSum([], 0)).toBeInstanceOf(Array)
+  it('do return array', () => {
+    assert.ok(twoSum([], 0) !== undefined)
+    assert.ok(Array.isArray(twoSum([], 0)))
   })
-  test('simple test 1', () => {
-    const nums1 = [2,7,11,15]
+  it('simple test 1', () => {
+    const nums1 = [2, 7, 11, 15]
     const target = 9
-    expect(twoSum(nums1, target)).toStrictEqual([0,1])
-  })
-  test('simple test 2', () => {
-    const nums1 = [3,2,4]
-    const target = 6
-    expect(twoSum(nums1, target)).toStrictEqual([1,2])
-  })
-  test('simple test 3', () => {
-    const nums1 = [3,3]
-    const target = 6
-    expect(twoSum(nums1, target)).toStrictEqual([0,1])
-  })
 
+    assert.deepStrictEqual(twoSum(nums1, target), [0, 1])
+  })
+  it('simple test 2', () => {
+    const nums1 = [3, 2, 4]
+    const target = 6
 
+    assert.deepStrictEqual(twoSum(nums1, target), [1, 2])
+  })
+  it('simple test 3', () => {
+    const nums1 = [3, 3]
+    const target = 6
+
+    assert.deepStrictEqual(twoSum(nums1, target), [0, 1])
+  })
 })

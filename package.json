@@ -2,28 +2,24 @@
   "name": "leetcode_problems",
   "version": "1.0.0",
   "description": "My thoughts on Leetcode problems",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "lint": "eslint --fix ./src/*/*.js ",
-    "test": "jest --coverage",
-    "dev": "jest --watch"
+    "check": "prettier . --check && eslint . --ext .js,.vue",
+    "fix": "prettier . --write && eslint . --ext .js,.vue --fix",
+    "test": "node --test \"src/**/*.spec.js\""
+  },
+  "engines": {
+    "node": ">=22.0.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VaskoDeGama/leetcode_problems.git"
   },
   "keywords": [],
-  "author": "VaskaDaGama (karmenyuk@yandex.ru)",
-  "license": "ISC",
+  "author": "VaskaDaGama",
+  "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-jest": "^24.5.2",
-    "jest": "^27.0.3",
-    "jest-runner-eslint": "^0.11.1"
+    "@swarmmachina/standards": "^1.0.1"
   },
   "bugs": {
     "url": "https://github.com/VaskoDeGama/leetcode_problems/issues"

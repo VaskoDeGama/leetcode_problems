@@ -1,13 +1,15 @@
-const maxSubArray = require('./maxSubArray')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import maxSubArray from './maxSubArray.js'
 
 describe('maxSubArray', () => {
-  test('will be define', () => {
-    expect(maxSubArray).toBeDefined()
+  it('will be define', () => {
+    assert.ok(maxSubArray !== undefined)
   })
-  test('do return something.', () => {
-    expect(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4])).toBeDefined()
+  it('do return something.', () => {
+    assert.ok(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]) !== undefined)
   })
-  test('simple test 1', () => {
-    expect(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4])).toStrictEqual(6)
+  it('simple test 1', () => {
+    assert.deepStrictEqual(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]), 6)
   })
 })

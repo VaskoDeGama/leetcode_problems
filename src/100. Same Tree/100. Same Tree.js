@@ -13,15 +13,15 @@
 /**
  * @param {TreeNode} p
  * @param {TreeNode} q
- * @return {boolean}
+ * @returns {boolean}
  */
-function isSameTree(p, q) {
-  if (!p && !q) return true
+export default function isSameTree(p, q) {
+  if (!p && !q) {
+    return true
+  }
   if (!p || !q || p.val !== q.val) {
     return false
   }
 
   return isSameTree(q.left, p.left) && isSameTree(q.right, p.right)
 }
-
-module.exports = isSameTree

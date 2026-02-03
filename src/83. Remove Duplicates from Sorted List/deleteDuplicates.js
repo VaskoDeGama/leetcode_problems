@@ -9,11 +9,14 @@
  */
 /**
  * @param {ListNode} head
- * @return {ListNode}
+ * @returns {ListNode}
  */
-function deleteDuplicates(head) {
-  if (!head || !head.next) return head
+export default function deleteDuplicates(head) {
+  if (!head || !head.next) {
+    return head
+  }
   let current = head
+
   while (current.next !== null) {
     if (current.val === current.next.val) {
       current.next = current.next.next
@@ -23,5 +26,3 @@ function deleteDuplicates(head) {
   }
   return head
 }
-
-module.exports = deleteDuplicates

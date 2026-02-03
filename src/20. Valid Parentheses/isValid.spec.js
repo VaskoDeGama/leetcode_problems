@@ -1,20 +1,21 @@
-const isValid = require('./isValid')
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
+import isValid from './isValid.js'
 
 describe('longestCommonPrefix', () => {
-  test('will be define', () => {
-    expect(isValid).toBeDefined()
+  it('will be define', () => {
+    assert.ok(isValid !== undefined)
   })
-  test('do  return Number', () => {
-    expect(isValid("()")).toBeDefined()
+  it('do  return Number', () => {
+    assert.ok(isValid('()') !== undefined)
   })
-  test('simple test 1', () => {
-    expect( isValid("()[]{}")).toBeTruthy()
+  it('simple test 1', () => {
+    assert.ok(isValid('()[]{}'))
   })
-  test('simple test 2', () => {
-    expect( isValid("{[]}")).toBeTruthy()
+  it('simple test 2', () => {
+    assert.ok(isValid('{[]}'))
   })
-  test('simple test 3', () => {
-    expect( isValid("([)]")).toBeFalsy()
+  it('simple test 3', () => {
+    assert.ok(!isValid('([)]'))
   })
 })
-

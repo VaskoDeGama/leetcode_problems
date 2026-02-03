@@ -5,13 +5,12 @@
  *
  * If the last word does not exist, return 0.
  * Note: A word is defined as a maximal substring consisting of non-space characters only.
- *
  * @param {string} s
- * @return {number}
+ * @returns {number}
  */
-
-function lengthOfLastWord(s) {
+export default function lengthOfLastWord(s) {
   const arr = s.split(' ')
+
   for (let r = arr.length - 1; r >= 0; r--) {
     if (arr[r] !== '') {
       return arr[r].length
@@ -19,5 +18,3 @@ function lengthOfLastWord(s) {
   }
   return 0
 }
-
-module.exports = lengthOfLastWord
