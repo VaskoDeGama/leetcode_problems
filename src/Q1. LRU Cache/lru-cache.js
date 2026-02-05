@@ -14,129 +14,20 @@ void put(int key, int value) Update the value of the key if the key exists. Othe
 The functions get and put must each run in O(1) average time complexity.
  */
 
-class Node {
-  constructor() {
-    this.key = null
-    this.value = null
-    this.prev = null
-    this.next = null
-  }
-
-  clear() {
-    this.key = null
-    this.value = null
-    this.next = null
-    this.prev = null
-  }
-}
-
-class DoubleList {
-  /** @type {Node} */
-  head = new Node()
-  /** @type {Node} */
-  tail = new Node()
-  /** @type {Node} */
-  pool = new Node()
-
-  constructor() {
-    this.head.next = this.tail
-    this.head.key = 'head'
-    this.tail.prev = this.head
-    this.tail.key = 'tail'
-  }
-
-  /**
-   * @returns {Node}
-   */
-  getNode() {
-    if (this.pool) {
-      const node = this.pool
-
-      this.pool = null
-
-      return node
-    }
-
-    return new Node()
-  }
-
-  unlink(node) {
-    const next = node.next
-    const prev = node.prev
-
-    if (prev) {
-      prev.next = next
-    }
-
-    if (next) {
-      next.prev = prev
-    }
-
-    node.prev = null
-    node.next = null
-  }
-
-  remove(node) {
-    this.unlink(node)
-    node.clear()
-
-    this.pool = node
-  }
-
-  insertAfter(node, newNode) {
-    newNode.next = node.next
-    newNode.prev = node
-
-    node.next.prev = newNode
-    node.next = newNode
-  }
-
-  insertAfterHead(newNode) {
-    const node = this.head
-
-    newNode.next = node.next
-    newNode.prev = node
-
-    node.next.prev = newNode
-    node.next = newNode
-  }
-
-  insertBefore(node, newNode) {
-    newNode.prev = node.prev
-    newNode.next = node
-
-    node.prev.next = newNode
-    node.prev = newNode
-  }
-
-  insertBeforeTail(newNode) {
-    const node = this.tail
-
-    newNode.prev = node.prev
-    newNode.next = node
-
-    node.prev.next = newNode
-    node.prev = newNode
-  }
-
-  moveToTail(node) {
-    this.unlink(node)
-    this.insertBeforeTail(node)
-  }
-}
+import DoubleLinkedList from '../707. Design Linked List/double-linked-list.js'
 
 export default class LRUCache {
   constructor(capacity) {
     this.capacity = capacity
     this.cache = new Map()
-    this.dl = new DoubleList()
+    this.dl = new DoubleLinkedList()
   }
 
   get(key) {
     const node = this.cache.get(key)
 
     if (node) {
-      this.dl.moveToTail(node)
+      this.dl.insertBeforeTail(node)
 
       return node.value
     }
@@ -155,7 +46,7 @@ export default class LRUCache {
       node.key = key
       node.value = value
 
-      this.dl.moveToTail(node)
+      this.dl.insertBeforeTail(node)
       return
     }
 
@@ -167,7 +58,7 @@ export default class LRUCache {
       }
 
       this.cache.delete(lru.key)
-      this.dl.remove(lru)
+      this.dl.delete(lru)
     }
 
     const newNode = this.dl.getNode()
