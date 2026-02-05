@@ -107,10 +107,52 @@ export default class DoubleLinkedList {
 }
 
 export class MyLinkedList extends DoubleLinkedList {
-  map = new Map()
+  size = 0
+
+  getNodeByIndex(index) {
+    if (index < 0 || index >= this.size) {
+      return null
+    }
+
+    const mid = this.size >> 1
+
+    let node
+
+    if (index < mid) {
+      node = this.head.next
+
+      for (let i = 0; i < index; i++) {
+        node = node.next
+      }
+    } else {
+      node = this.tail.prev
+
+      for (let i = this.size - 1; i > index; i--) {
+        node = node.prev
+      }
+    }
+
+    return node
+  }
+
+  getNextNodeForInsert(index) {
+    if (index < 0) {
+      index = 0
+    }
+
+    if (index > this.size) {
+      return null
+    }
+
+    if (index === this.size) {
+      return this.tail
+    }
+
+    return this.getNodeByIndex(index)
+  }
 
   get(index) {
-    const node = this.map.get(index)
+    const node = this.getNodeByIndex(index)
 
     if (node) {
       return node.value
@@ -119,27 +161,13 @@ export class MyLinkedList extends DoubleLinkedList {
     return -1
   }
 
-  updateIndex() {
-    this.map.clear()
-
-    let root = this.head.next
-    let index = 0
-
-    while (root && root !== this.tail) {
-      root.key = index
-      this.map.set(index, root)
-      index++
-      root = root.next
-    }
-  }
-
   addAtHead(value) {
     const node = this.getNode()
 
     node.value = value
 
     this.insertAfterHead(node)
-    this.updateIndex()
+    this.size++
   }
 
   addAtTail(value) {
@@ -148,33 +176,29 @@ export class MyLinkedList extends DoubleLinkedList {
     node.value = value
 
     this.insertBeforeTail(node)
-    this.updateIndex()
+    this.size++
   }
 
   addAtIndex(index, value) {
-    if (index < 0) {
+    const nextNode = this.getNextNodeForInsert(index)
+
+    if (!nextNode) {
       return
     }
-
-    if (index > this.map.size) {
-      return
-    }
-
-    const nextNode = this.map.get(index) || this.tail
 
     const node = this.getNode()
 
     node.value = value
     this.insertBefore(nextNode, node)
-    this.updateIndex()
+    this.size++
   }
 
   deleteAtIndex(index) {
-    const node = this.map.get(index)
+    const node = this.getNodeByIndex(index)
 
     if (node) {
       this.delete(node)
-      this.updateIndex()
+      this.size--
     }
   }
 }
