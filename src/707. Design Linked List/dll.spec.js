@@ -187,4 +187,34 @@ describe('DLL', () => {
 
     assert.strictEqual(dll.head.next, nodeThree, 'head next not a nodeThree')
   })
+
+  it('dll size', () => {
+    const dll = new DLL()
+
+    const nodeOne = dll.getNode()
+
+    nodeOne.key = 1
+
+    const nodeTwo = dll.getNode()
+
+    nodeTwo.key = 2
+
+    const nodeThree = dll.getNode()
+
+    nodeThree.key = 3
+
+    dll.insertBeforeTail(nodeOne)
+    assert.equal(dll.size, 1, 'DLL size mismatch')
+
+    dll.insertAfterHead(nodeTwo)
+    assert.equal(dll.size, 2, 'DLL size mismatch')
+
+    dll.delete(nodeThree)
+
+    assert.equal(dll.size, 2, 'DLL size mismatch')
+
+    dll.delete(nodeTwo)
+
+    assert.equal(dll.size, 1, 'DLL size mismatch')
+  })
 })

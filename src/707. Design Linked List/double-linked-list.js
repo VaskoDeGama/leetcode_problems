@@ -38,6 +38,8 @@ export default class DoubleLinkedList {
     this.head.key = 'Head'
     this.tail.prev = this.head
     this.tail.key = 'Tail'
+
+    this.size = 0
   }
 
   getNode() {
@@ -58,6 +60,10 @@ export default class DoubleLinkedList {
 
     if (node.next) {
       node.next.prev = node.prev
+    }
+
+    if (node.prev || node.next) {
+      this.size--
     }
 
     node.next = null
@@ -83,6 +89,8 @@ export default class DoubleLinkedList {
 
     prevNode.next = newNode
     next.prev = newNode
+
+    this.size++
   }
 
   insertBefore(nextNode, newNode) {
@@ -95,6 +103,7 @@ export default class DoubleLinkedList {
 
     nextNode.prev = newNode
     prev.next = newNode
+    this.size++
   }
 
   insertBeforeTail(newNode) {
@@ -107,8 +116,6 @@ export default class DoubleLinkedList {
 }
 
 export class MyLinkedList extends DoubleLinkedList {
-  size = 0
-
   getNodeByIndex(index) {
     if (index < 0 || index >= this.size) {
       return null
@@ -167,7 +174,6 @@ export class MyLinkedList extends DoubleLinkedList {
     node.value = value
 
     this.insertAfterHead(node)
-    this.size++
   }
 
   addAtTail(value) {
@@ -176,7 +182,6 @@ export class MyLinkedList extends DoubleLinkedList {
     node.value = value
 
     this.insertBeforeTail(node)
-    this.size++
   }
 
   addAtIndex(index, value) {
@@ -190,7 +195,6 @@ export class MyLinkedList extends DoubleLinkedList {
 
     node.value = value
     this.insertBefore(nextNode, node)
-    this.size++
   }
 
   deleteAtIndex(index) {
@@ -198,7 +202,6 @@ export class MyLinkedList extends DoubleLinkedList {
 
     if (node) {
       this.delete(node)
-      this.size--
     }
   }
 }
