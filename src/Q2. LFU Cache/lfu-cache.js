@@ -31,6 +31,18 @@ export default class LFUCache {
 
     this.capacity = capacity
     this.size = 0
+    this.minFreq = 0
+  }
+
+  getList(freq) {
+    let list = this.lru.get(freq)
+
+    if (!list) {
+      list = new DoubleLinkedList()
+      this.lru.set(freq, list)
+    }
+
+    return list
   }
 
   get(key) {
@@ -46,32 +58,36 @@ export default class LFUCache {
   }
 
   freqUP(node) {
-    const prevList = this.lru.get(node.freq)
+    const prevFreq = node.freq
+    const prevList = this.getList(prevFreq)
 
     prevList.unlink(node)
 
-    node.freq++
+    if (prevList.size === 0) {
+      this.lru.delete(prevFreq)
 
-    if (!this.lru.has(node.freq)) {
-      this.lru.set(node.freq, new DoubleLinkedList())
+      if (this.minFreq === prevFreq) {
+        this.minFreq++
+
+        while (this.size > 0 && !this.lru.has(this.minFreq)) {
+          this.minFreq++
+        }
+      }
     }
 
-    const nextList = this.lru.get(node.freq)
+    node.freq++
+
+    const nextList = this.getList(node.freq)
 
     nextList.insertBeforeTail(node)
   }
 
   checkCapacity() {
     if (this.size >= this.capacity) {
-      let lru = null
-      const lruList = this.lru.values()
+      const lru = this.lru.get(this.minFreq)
 
-      while (!lru) {
-        const next = lruList.next().value
-
-        if (next.size) {
-          lru = next
-        }
+      if (!lru) {
+        return
       }
 
       const node = lru.head.next
@@ -79,13 +95,25 @@ export default class LFUCache {
       this.map.delete(node.key)
       lru.delete(node)
       this.size--
+
+      if (lru.size === 0) {
+        this.lru.delete(this.minFreq)
+      }
+
+      if (this.size === 0) {
+        this.minFreq = 0
+      }
     }
   }
 
   put(key, value) {
-    if (this.map.has(key)) {
-      const node = this.map.get(key)
+    if (this.capacity === 0) {
+      return
+    }
 
+    const node = this.map.get(key)
+
+    if (node) {
       node.value = value
 
       this.freqUP(node)
@@ -98,15 +126,17 @@ export default class LFUCache {
       this.lru.set(1, new DoubleLinkedList())
     }
 
-    const list = this.lru.get(1)
-    const node = list.getNode()
+    const list = this.getList(1)
+    const newNode = list.getNode()
 
-    node.freq = 1
-    node.key = key
-    node.value = value
+    newNode.freq = 1
+    newNode.key = key
+    newNode.value = value
 
-    list.insertBeforeTail(node)
-    this.map.set(key, node)
+    this.minFreq = 1
+
+    list.insertBeforeTail(newNode)
+    this.map.set(key, newNode)
     this.size++
   }
 }
